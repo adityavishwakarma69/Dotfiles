@@ -1,0 +1,49 @@
+@import "/home/aditya/.cache/wal/colors-wofi.css";
+
+*{
+	font-size : 18;
+	font-family : "Fira Code Nerd Font";
+	font-weight : bold ;
+	border-radius : 10;
+}
+
+
+window {
+margin: 5px;
+border-width: 2px;
+border-style: solid;
+border-radius: 10;
+border-color: @foreground;
+background-color: @background-alpha;
+}
+
+#input {
+margin: 5px;
+background-color: @background;
+border: 1px solid @foreground;
+}
+
+#inner-box {
+margin: 5px;
+}
+
+#outer-box {
+margin: 5px;
+}
+
+#scroll {
+margin: 5px;
+}
+
+#text {
+margin: 5px;
+}
+
+#entry:selected{
+border: 2px solid @foreground;
+background-color : rgba(0, 0, 0, 0);
+}
+#text:selected{
+color: @foreground;
+}
+

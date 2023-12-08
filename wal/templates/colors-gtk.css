@@ -1,0 +1,41 @@
+@define-color foreground {foreground};
+@define-color background {background};
+@define-color cursor {cursor};
+
+@define-color color0 {color0};
+@define-color color1 {color1};
+@define-color color2 {color2};
+@define-color color3 {color3};
+@define-color color4 {color4};
+@define-color color5 {color5};
+@define-color color6 {color6};
+@define-color color7 {color7};
+@define-color color8 {color8};
+@define-color color9 {color9};
+@define-color color10 {color10};
+@define-color color11 {color11};
+@define-color color12 {color12};
+@define-color color13 {color13};
+@define-color color14 {color14};
+@define-color color15 {color15};
+
+@define-color foreground-a {foreground.rgba};
+@define-color background-a {background.rgba};
+@define-color cursor-a {cursor.rgba};
+
+@define-color color0-a {color0.rgba};
+@define-color color1-a {color1.rgba};
+@define-color color2-a {color2.rgba};
+@define-color color3-a {color3.rgba};
+@define-color color4-a {color4.rgba};
+@define-color color5-a {color5.rgba};
+@define-color color6-a {color6.rgba};
+@define-color color7-a {color7.rgba};
+@define-color color8-a {color8.rgba};
+@define-color color9-a {color9.rgba};
+@define-color color10-a {color10.rgba};
+@define-color color11-a {color11.rgba};
+@define-color color12-a {color12.rgba};
+@define-color color13-a {color13.rgba};
+@define-color color14-a {color14.rgba};
+@define-color color15-a {color15.rgba};

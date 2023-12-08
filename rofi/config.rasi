@@ -1,0 +1,14 @@
+configuration {
+  show-icons: true;
+  icon-theme: "Papirus";
+  display-drun: "Applications";
+  drun-display-format: "{name}";
+  font: "ProFont IIx Nerd Font Bold 20";
+}
+
+
+@import "~/.cache/wal/colors-rofi"
+
+window {
+height : 37%;
+}

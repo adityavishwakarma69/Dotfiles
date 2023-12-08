@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while getopts p:a: flag
+do
+    case "${flag}" in
+        p) path=${OPTARG};;
+	a) alpha=${OPTARG};;
+    esac
+done
+wal -i $path -a $alpha;
+cp $path ~/.local/share/bg
+qtile cmd-obj -o cmd -f restart

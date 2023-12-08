@@ -1,0 +1,6 @@
+#!/bin/bash
+sleep 10
+while : 
+do
+	paplay bg.wav --volume 0
+done

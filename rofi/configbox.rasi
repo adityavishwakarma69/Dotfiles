@@ -1,0 +1,17 @@
+configuration {
+  show-icons: false;
+  display-drun: "Applications";
+  drun-display-format: "{name}";
+  font: "ProFont IIx Nerd Font  bold 20";
+}
+
+@import "~/.cache/wal/colors-rofi"
+
+window {
+	width : 30%;
+	height : 50%;
+}
+listview {
+	scrollbar : false;
+	border : 0px;
+}

@@ -1,0 +1,13 @@
+#! /usr/bin/env python3
+
+import os
+
+p = os.popen("amixer sget Master | awk -F\"[][]\" \'/Right:/ { print $2 }\'").read()
+p = int(p[:len(p) - 2])
+
+if p < 10:
+    print(f" {p}", end = '%')
+elif p < 50:
+    print(f" {p}", end = '%')
+else:
+    print(f" {p}", end = '%')

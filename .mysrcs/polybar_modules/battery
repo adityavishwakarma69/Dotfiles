@@ -1,0 +1,15 @@
+#! /usr/bin/env python3
+
+import psutil
+import time
+
+battery_status = psutil.sensors_battery()
+per = int(battery_status.percent)
+plugged = battery_status.power_plugged
+
+if plugged == None:
+    print(f"󰂅 {per}")
+elif not plugged:
+    print(f"󱟤 {per}")
+elif plugged:
+    print(f" {per}")

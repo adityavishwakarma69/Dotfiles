@@ -1,0 +1,47 @@
+*{
+	font-size : 18;
+	font-family : "Fira Code Nerd Font";
+	font-weight : bold ;
+	border-radius : 10;
+}
+
+
+window {
+margin: 5px;
+border-width: 2px;
+border-style: solid;
+border-radius: 10;
+border-color: #33CCFF;
+background-color: rgba(16, 18, 27, 0.60);
+}
+
+#input {
+display: none;
+background-color: rgba(16, 18, 27, 0.8);
+border: 0px solid #33ccff;
+}
+
+#inner-box {
+margin: 5px;
+}
+
+#outer-box {
+margin: 5px;
+}
+
+#scroll {
+margin: 5px;
+}
+
+#text {
+margin: 5px;
+}
+
+#entry:selected{
+border: 2px solid #33ccff;
+background-color : rgba(0, 0, 0, 0);
+}
+#text:selected{
+color: #33ccff;
+}
+

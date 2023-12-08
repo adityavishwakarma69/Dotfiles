@@ -1,0 +1,3 @@
+killall plank
+plank
+exit 0
