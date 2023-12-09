@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+IMGPATH="${HOME}/Pictures/Screenshots/$(date +'SCREENSHOT_%y-%m-%d-%H_%M_%S')"
+scrot $IMGPATH
+notify-send "Scrotshot" "$IMGPATH"
