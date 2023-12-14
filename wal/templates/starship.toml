@@ -22,9 +22,9 @@ $rust\
 $scala\
 [](fg:{color4} bg:{color5})\
 $docker_context\
-[](fg:{color5} bg:{color6})\
+[](fg:{color5} bg:{color15})\
 $time\
-[ ](fg:{color6})\
+[ ](fg:{color15})\
 """
 
 # Disable the blank line at the start of the prompt
@@ -140,5 +140,5 @@ format = '[ $symbol ($version) ]($style)'
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:{color6} fg:{color0}"
+style = "bg:{color15} fg:{color0}"
 format = '[  $time ]($style)'

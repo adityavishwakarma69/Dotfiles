@@ -8,5 +8,7 @@ do
     esac
 done
 wal -i $path -a $alpha;
+#wal -i $path;
 cp $path ~/.local/share/bg
+pkill dunst
 qtile cmd-obj -o cmd -f restart

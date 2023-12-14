@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+while [ 1 ]
+do
+nice xwinwrap -b -s -fs -st -sp -nf -ov -fdt -- mpv -wid WID --really-quiet --framedrop=vo --no-audio --panscan="1.0" ~/.local/share/bg
+done
