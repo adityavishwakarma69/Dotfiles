@@ -25,17 +25,19 @@
 # SOFTWARE.
 import sys
 import os
+import subprocess
 from libqtile import bar, layout, widget 
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from libqtile import hook
 
 
 sys.path.append("/home/aditya/.cache/wal")
 import colors
 
 mod = "mod4"
-terminal = 'kitty'
+terminal = 'alacritty'
 
 
 
@@ -86,7 +88,7 @@ keys = [
     Key([mod, "shift"], "e", lazy.spawn("/home/aditya/.mysrcs/rofiexit"), desc="exit menu"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], 'd', lazy.spawn("rofi -show drun"), desc = "spawn rofi"),
-    Key([mod], 'e', lazy.spawn("kitty -e zsh -c lf"), desc = "spawn lf"),
+    Key([mod], 'e', lazy.spawn(f"{terminal} -e zsh -c lf"), desc = "spawn lf"),
     Key([mod], 'n', lazy.spawn("dunstctl history-pop"), desc = "spawn old notification"),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
@@ -100,7 +102,7 @@ keys = [
     Key([mod], 'o', lazy.spawn("/home/aditya/.mysrcs/rofiemoji")),
 
 
-    Key([], "Print", lazy.spawn("bash -c \'scrot /home/aditya/Pictures/Screenshots/$(date +\"scrshot%Y-%m-%d-%H-%M-%S.png\")\'")),
+    Key([], "Print", lazy.spawn("/home/aditya/.mysrcs/scrotshot")),
 ]
 
 groups = [Group(i) for i in ['1', '2', '3', '4', '5', '6', '7', '8', '9']]
@@ -153,10 +155,7 @@ screens = [
         wallpaper_mode = 'fill',
         top=bar.Bar(
             [
-                #widget.CurrentLayout(),
-                
-               
-                
+                #widget.CurrentLayout(), 
                
                 
                 widget.TextBox(foreground = colors.background,
@@ -174,7 +173,7 @@ screens = [
                 widget.TextBox(background = colors.foreground,
                                foreground = colors.background,
                                text = " ",
-                               mouse_callbacks = {'Button1' : lazy.spawn("kitty lf")}),
+                               mouse_callbacks = {'Button1' : lazy.spawn("alacritty lf")}),
                 widget.TextBox(background = colors.foreground,
                                foreground = colors.background,
                                text = "",
@@ -183,7 +182,7 @@ screens = [
                 
                 
                 widget.TextBox(foreground = colors.foreground,
-                               background = colors.background,
+                               background = colors.color1,
                                fontsize = 45,
                                text = "",
                                padding = -3,
@@ -199,15 +198,15 @@ screens = [
                     rounded = False,
                     margin_y = 4,
                     margin_x = 1,
-                    active = colors.foreground + '60',
-                    inactive = colors.foreground + '60',
+                    active = colors.background + '60',
+                    inactive = colors.background + '60',
                     this_current_screen_border = colors.foreground,
                     urgent_alert_method = 'text',
                     urgent_border = colors.color10,
-                    background = colors.background,
+                    background = colors.color1,
                     fmt = "{}"),
 
-                widget.TextBox(foreground = colors.background,
+                widget.TextBox(foreground = colors.color1,
                                fontsize = 45,
                                text = "",
                                padding = -3,
@@ -233,19 +232,19 @@ screens = [
                                      #threshold = 80),
                 
 
-                widget.TextBox(foreground = colors.foreground,
+                widget.TextBox(foreground = colors.color6,
                                fontsize = 45,
-                               text = "",
-                               padding = -3,
+                               text = "", 
+                               padding = -2,
                     ),
 
                 widget.Memory(format = "<span weight = 'bold'>󰞍{MemUsed: .0f}M</span>",
                               foreground = colors.background,
-                              background = colors.foreground,
+                              background = colors.color6,
                               update_interval = 7.5),
                 
-                widget.TextBox(foreground = colors.foreground,
-                               background = colors.background,
+                widget.TextBox(foreground = colors.color6,
+                               background = colors.color5,
                                fontsize = 45,
                                text = "",
                                padding = -3,
@@ -255,33 +254,33 @@ screens = [
 
                 widget.Backlight(brightness_file = "/sys/class/backlight/intel_backlight/brightness",
                                  max_brightness_file = "/sys/class/backlight/intel_backlight/max_brightness",
-                                 foreground = colors.foreground,
-                                 background = colors.background,
+                                 foreground = colors.background,
+                                 background = colors.color5,
                                  format = ' <span weight = \'bold\'>{percent:2.0%}</span>',
                                  step = 2),
                 
 
 
-                widget.TextBox(foreground = colors.foreground,
-                               background = colors.background,
+                widget.TextBox(foreground = colors.color4,
+                               background = colors.color5,
                                fontsize = 45,
                                text = "",
                                padding = -3,
                     ),
                 widget.Volume(foreground = colors.background,
-                              background = colors.foreground, 
+                              background = colors.color4, 
                               fmt='󰕿<span weight = \'bold\'>{}</span>'),
                 
-                widget.TextBox(foreground = colors.foreground,
-                               background = colors.background,
+                widget.TextBox(foreground = colors.color4,
+                               background = colors.color3,
                                fontsize = 45,
                                text = "",
                                padding = -3,
                     ),                
 
 
-                widget.Wlan(foreground = colors.foreground,
-                            background = colors.background,
+                widget.Wlan(foreground = colors.background,
+                            background = colors.color3,
                             format=" <span weight = 'bold'>{percent:2.0%}</span>",
                             update_interval = 5,
                             disconnected_message = "󰖪 ",
@@ -289,23 +288,23 @@ screens = [
                
                 
 
-                widget.TextBox(foreground = colors.foreground,
-                               background = colors.background,
+                widget.TextBox(foreground = colors.color2,
+                               background = colors.color3,
                                fontsize = 45,
                                text = "",
                                padding = -3,
                     ),
                 widget.Battery(format = "{char}<span weight='bold'>{percent:2.0%}</span>",
                                foreground = colors.background,
-                               background = colors.foreground,
+                               background = colors.color2,
                                unknown_char = " ",
                                full_char = "󱐋",
                                discharge_char = " ",
                                charge_char = " ",
                                update_interval = 10,
                                show_short_text = False), 
-                widget.TextBox(foreground = colors.foreground,
-                               background = colors.background,
+                widget.TextBox(foreground = colors.color2,
+                               background = colors.color1,
                                fontsize = 45,
                                text = "",
                                padding = -3,
@@ -315,12 +314,12 @@ screens = [
 
 
                 widget.Clock(format="󰥔 <span weight = 'bold'>%H:%M</span>",
-                             foreground = colors.foreground,
-                             background = colors.background),
+                             foreground = colors.background,
+                             background = colors.color1),
                
 
                 widget.TextBox(foreground = colors.foreground,
-                               background = colors.background,
+                               background = colors.color1,
                                fontsize = 45,
                                text = "",
                                padding = -3,
@@ -402,6 +401,8 @@ wl_input_rules = None
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
 
-os.system("picom -b --no-ewmh-fullscreen")
-os.system("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown")
-os.system("dunst -config ~/.cache/wal/dunstrc & disown")
+
+@hook.subscribe.startup_once
+def autostart(): 
+    os.system("picom -b --no-ewmh-fullscreen")
+    os.system("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-2 & disown")
